@@ -100,6 +100,7 @@ Details: [VM specs](docs/background/grok-bot-computer-specs.md) and [running man
 - [Grok Bot reference](docs/grok-bot-reference.md): what we are rebuilding.
 - [Architecture](docs/architecture.md): the plan and open decisions.
 - [Backend](docs/backend.md): how the server works, and how to run and deploy it.
+- [Free cloud setup](docs/cloud-codespaces.md): run OpenCode in GitHub Codespaces with a free model, no PC needed.
 
 ## Status
 
