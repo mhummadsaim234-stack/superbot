@@ -1,0 +1,21 @@
+{
+  "name": "SuperBot Cloud (OpenCode)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/rust:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [28894, 3000],
+  "portsAttributes": {
+    "28894": {
+      "label": "OpenCode",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "SuperBot server",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "remoteUser": "vscode"
+}
