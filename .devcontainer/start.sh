@@ -13,6 +13,11 @@ fi
 
 : "${TOKENHARBOR_KEY:?Set the TOKENHARBOR_KEY Codespaces secret, or $HOME/.config/superbot/secrets.env.}"
 
+# A public Codespaces port must never expose an unauthenticated server.
+if [ -n "${AUTH_PASSWORD:-}" ]; then
+  export OPENCODE_SERVER_PASSWORD="$AUTH_PASSWORD"
+fi
+
 export PATH="$HOME/.opencode/bin:$PATH"
 PORT="${OPENCODE_PORT:-28894}"
 CFG_DIR="$HOME/.config/opencode"
