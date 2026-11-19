@@ -3,7 +3,15 @@
 # Usage: TOKENHARBOR_KEY=... bash .devcontainer/start.sh
 set -euo pipefail
 
-: "${TOKENHARBOR_KEY:?Set the TOKENHARBOR_KEY Codespaces secret (Settings -> Codespaces -> Secrets).}"
+# Codespaces secrets are not exported to gh codespace ssh sessions, so allow a local file too.
+SECRETS_FILE="${SUPERBOT_SECRETS:-$HOME/.config/superbot/secrets.env}"
+if [ -f "$SECRETS_FILE" ]; then
+  set -a
+  . "$SECRETS_FILE"
+  set +a
+fi
+
+: "${TOKENHARBOR_KEY:?Set the TOKENHARBOR_KEY Codespaces secret, or $HOME/.config/superbot/secrets.env.}"
 
 export PATH="$HOME/.opencode/bin:$PATH"
 PORT="${OPENCODE_PORT:-28894}"
